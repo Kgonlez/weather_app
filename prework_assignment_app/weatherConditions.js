@@ -5,15 +5,15 @@ const weatherConditions = {
   3: "Overcast",
   45: "Fog",
   48: "Depositing Rime Fog",
-  51: "Drizzle: Light",
-  53: "Drizzle: Moderate",
-  55: "Drizzle: Dense",
-  61: "Rain: Slight",
-  63: "Rain: Moderate",
-  65: "Rain: Heavy",
-  71: "Snowfall: Slight",
-  73: "Snowfall: Moderate",
-  75: "Snowfall: Heavy",
+  51: "Light Drizzle",
+  53: "Moderate Drizzle",
+  55: "Dense Drizzle",
+  61: "Slight Rain",
+  63: "Moderate Rain",
+  65: "Heavy Rain",
+  71: "Slight Snowfall",
+  73: "Moderate Snowfall",
+  75: "Heavy Snowfall",
   95: "Thunderstorm",
   96: "Thunderstorm ",
 };
@@ -52,4 +52,4 @@ function updateWeatherImage(weatherCode) {
   weatherImage.src = `assets/weather_img/${imageFile}`;
 }
 
-export { updateWeatherCondition, updateWeatherImage };
+export { updateWeatherCondition, updateWeatherImage, weatherConditions, weatherImages };

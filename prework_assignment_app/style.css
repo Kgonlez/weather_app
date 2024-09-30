@@ -227,7 +227,11 @@ body::before {
   width: 50px;
   height: 50px;
 }
-
+.forecast-item-img {
+  width: 50px; 
+  height: 50px;
+  margin-bottom: 5px;
+}
 /* END SECTION: WEATHER INFO*/
 
 /* SECTION: MESSAGE*/
