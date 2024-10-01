@@ -1,19 +1,19 @@
 const weatherConditions = {
   0: "Clear",
-  1: "Mainly Clear",
-  2: "Partly Cloudy",
-  3: "Overcast",
+  1: "Clear",
+  2: "Cloudy",
+  3: "Cloudy",
   45: "Fog",
-  48: "Depositing Rime Fog",
-  51: "Light Drizzle",
-  53: "Moderate Drizzle",
-  55: "Dense Drizzle",
-  61: "Slight Rain",
-  63: "Moderate Rain",
-  65: "Heavy Rain",
-  71: "Slight Snowfall",
-  73: "Moderate Snowfall",
-  75: "Heavy Snowfall",
+  48: "Fog",
+  51: "Drizzle",
+  53: "Drizzle",
+  55: "Drizzle",
+  61: "Rain",
+  63: "Rain",
+  65: "Rain",
+  71: "Snowfall",
+  73: "Snowfall",
+  75: "Snowfall",
   95: "Thunderstorm",
   96: "Thunderstorm ",
 };
@@ -52,4 +52,9 @@ function updateWeatherImage(weatherCode) {
   weatherImage.src = `assets/weather_img/${imageFile}`;
 }
 
-export { updateWeatherCondition, updateWeatherImage, weatherConditions, weatherImages };
+export {
+  updateWeatherCondition,
+  updateWeatherImage,
+  weatherConditions,
+  weatherImages,
+};

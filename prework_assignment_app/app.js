@@ -56,10 +56,10 @@ function updateTempDisplay() {
 
   if (isFahrenheit) {
     displayedTemp = `${Math.round(convertToFahrenheit(tempInCelsius))} °F`;
-    toggleUnitBtn.textContent = "To °C";
+    toggleUnitBtn.textContent = "Convert to °C";
   } else {
     displayedTemp = `${Math.round(tempInCelsius)} °C`;
-    toggleUnitBtn.textContent = "To °F";
+    toggleUnitBtn.textContent = "Convert to °F";
   }
   tempText.innerHTML = displayedTemp;
 

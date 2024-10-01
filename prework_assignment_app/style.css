@@ -37,7 +37,7 @@ body::before {
 /* UTILITIES*/
 .regular-text {
   font-weight: 300;
-  font-size: 20px;
+  font-size: 16px;
 }
 
 .temp-text {
@@ -125,6 +125,7 @@ body::before {
 .country-text {
   font-size: 24px;
 }
+
 .location-date-container {
   display: flex;
   justify-content: space-between;
@@ -163,21 +164,28 @@ body::before {
 
 .condition-item span,
 .location span {
-  font-size: 32px;
+  font-size: 28px;
 }
-
+.condition-text {
+  font-size: 22px;
+  font-weight: 300;
+  padding-bottom: 10px;
+}
 .local-time-text,
 .wind-value-text {
   font-size: 16px;
 }
 
 #toggle-unit-btn {
-  background: rgb(0, 0, 0, 0.15);
-  border-radius: 12px;
-  color: white;
-  font-size: 16px;
+  /* background: rgb(83, 120, 154); */
+  background: rgb(0, 0, 0, 0.1);
+  border-radius: 10px;
+  border-color: aliceblue;
+  color: rgb(255, 255, 255);
+  font-size: 12px;
+  font-weight: 400;
   cursor: pointer;
-  padding: 4px;
+  padding: 3px;
 }
 
 #toggle-unit-btn:hover {
@@ -223,14 +231,14 @@ body::before {
 .forecast-item:hover {
   background: rgb(255, 255, 255, 0.15);
 }
+
 .forecast-item-img {
   width: 50px;
   height: 50px;
-}
-.forecast-item-img {
-  width: 50px; 
-  height: 50px;
   margin-bottom: 5px;
+}
+.forecast-item-temp{
+  font-size: 14px;
 }
 /* END SECTION: WEATHER INFO*/
 
@@ -241,13 +249,16 @@ body::before {
   align-items: center;
   text-align: center;
   gap: 20px;
-  margin-top: 20%;
+  margin-top: 5%;
+  padding: 15px;
+}
+.message-img {
+  max-width: 100%;
+  max-height:max-content;
+  height: auto; 
+  margin-bottom: 20px; 
 }
 
-.message-img {
-  height: 200px;
-  width: fit-content;
-}
 .error-404 img {
   height: 250px;
   width: fit-content;
