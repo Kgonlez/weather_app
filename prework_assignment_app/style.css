@@ -1,5 +1,7 @@
+/*Import Google Fonts */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
+/*Global Styles */
 * {
   margin: 0;
   padding: 0;
@@ -43,8 +45,8 @@ body::before {
 .temp-text {
   font-size: 40px;
 }
-/* END UTILITIES*/
 
+/*Navigation */
 .nav-container {
   position: absolute;
   top: 20px;
@@ -61,6 +63,7 @@ body::before {
   color: white;
 }
 
+/*Main Container */
 .main-container {
   width: 70%;
   max-width: 800px;
@@ -113,9 +116,8 @@ body::before {
   border: none;
   cursor: pointer;
 }
-/* End Input Container */
 
-/* SECTION: WEATHER INFO*/
+/* Weather Info Section*/
 .weather-info {
   display: flex;
   flex-direction: column;
@@ -176,6 +178,7 @@ body::before {
   font-size: 16px;
 }
 
+/*Unit Toggle Button */
 #toggle-unit-btn {
   /* background: rgb(83, 120, 154); */
   background: rgb(0, 0, 0, 0.1);
@@ -197,6 +200,7 @@ body::before {
   padding-top: 60px;
 }
 
+/* Forecast Items */
 .forecast-items-container {
   display: flex;
   gap: 15px;
@@ -240,9 +244,8 @@ body::before {
 .forecast-item-temp{
   font-size: 14px;
 }
-/* END SECTION: WEATHER INFO*/
 
-/* SECTION: MESSAGE*/
+/* Message Section */
 .section-message {
   display: flex;
   flex-direction: column;
@@ -263,7 +266,7 @@ body::before {
   height: 250px;
   width: fit-content;
 }
-/* END SECTION: MESSAGE*/
+
 
 /* Media Queries */
 @media (max-width: 768px) {
