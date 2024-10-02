@@ -1,4 +1,6 @@
-//Mapping of weather codes to corresponding weather condition descriptions
+/**
+  * Maps weather codes to weather condition descriptions
+  */
 const weatherConditions = {
   0: "Clear",
   1: "Clear",
@@ -19,13 +21,17 @@ const weatherConditions = {
   96: "Thunderstorm ",
 };
 
-//Function to update the displayed weather condition text in UI based on weather code
+/**
+  * Updates the displayed weather condition text in UI based on weather code
+  */
 function updateWeatherCondition(weatherCode) {
   const conditionText = document.querySelector(".condition-text");
-  conditionText.textContent = weatherConditions[weatherCode] || "Unknown"; //Default unknown if the code isn't on the list
+  conditionText.textContent = weatherConditions[weatherCode] || "Unknown";
 }
 
-//Mapping of weather codes to correspond weather icon filenames in assets/weather_img
+/**
+  * Maps weather codes to weather icon filenames in assets/weather_img dir
+  */
 const weatherImages = {
   0: "clear.svg",
   1: "clear.svg",
@@ -49,11 +55,13 @@ const weatherImages = {
   96: "thunderstorm.svg",
 };
 
-//Function to update the displayed weather image in UI based on weather code
+/**
+  * Updates the weather image displayed in UI based on weather code
+  */
 function updateWeatherImage(weatherCode) {
   const weatherImage = document.querySelector(".weather-summary-img");
-  const imageFile = weatherImages[weatherCode] || "clear.svg"; // Get the appropriate image file based on the weather code, defaulting to "clear.svg" if the code isn't in the list
-  weatherImage.src = `assets/weather_img/${imageFile}`; //Update the src attribute of the weather image to point to the correct file path
+  const imageFile = weatherImages[weatherCode] || "clear.svg";
+  weatherImage.src = `assets/weather_img/${imageFile}`;
 }
 
 export {
