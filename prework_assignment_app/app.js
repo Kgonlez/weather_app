@@ -10,7 +10,6 @@ let isFahrenheit = false;
 let tempInCelsius = 0;
 let forecastTempInCelsius = [];
 
-
 /**
  * Displays the local time for a given timezone
  */
@@ -34,9 +33,9 @@ function displayLocalTime(timezone) {
  * @param {boolean} short - Whether to display the date in short format (e.g. 'Tue').
  */
 function formatDate(date, short = false) {
-  const options = short ?
-    { weekday: "short" } :
-    { weekday: "short", month: "short", day: "numeric" };
+  const options = short
+    ? { weekday: "short" }
+    : { weekday: "short", month: "short", day: "numeric" };
   return date.toLocaleDateString("en-US", options);
 }
 
@@ -72,7 +71,9 @@ function updateTempDisplay(tempInCelsius, isFahrenheit) {
       isFahrenheit ? convertToFahrenheit(temp.min) : temp.min
     );
 
-    const forecastTempElement = document.querySelector(`.forecast-item-temp-${i}`);
+    const forecastTempElement = document.querySelector(
+      `.forecast-item-temp-${i}`
+    );
     if (forecastTempElement) {
       let unit = isFahrenheit ? "F" : "C";
       forecastTempElement.innerHTML = `H:${maxTemp}°${unit} L:${minTemp}°${unit}`;
@@ -98,8 +99,9 @@ async function fetchWeatherData(city) {
   }
 
   try {
-    const geocodeData = await fetch(geocodeUrl)
-      .then((response) => response.json());
+    const geocodeData = await fetch(geocodeUrl).then((response) =>
+      response.json()
+    );
 
     if (geocodeData.results.length === 0) {
       throw new Error("City not found");
@@ -107,13 +109,16 @@ async function fetchWeatherData(city) {
 
     // Extract city name and coordinates (latitude and longitude) from the geocode API response
     const components = geocodeData.results[0].components;
-    const cityName = components.city || components.town || components.village || city;
+    const cityName =
+      components.city || components.town || components.village || city;
     const lat = geocodeData.results[0].geometry.lat;
     const lon = geocodeData.results[0].geometry.lng;
 
     const weatherUrl = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true&daily=weather_code&daily=temperature_2m_max,temperature_2m_min&timezone=auto`;
 
-    const weatherData = await fetch(weatherUrl).then((response) => response.json());
+    const weatherData = await fetch(weatherUrl).then((response) =>
+      response.json()
+    );
     const formattedDate = formatDate(new Date());
 
     updateWeatherInfo(weatherData, cityName, formattedDate);
@@ -124,7 +129,7 @@ async function fetchWeatherData(city) {
 }
 
 /**
- * Function to update the UI with the current weather data 
+ * Function to update the UI with the current weather data
  *
  * @param {object} weatherData - The weather data object returned by the Open Meteo API.
  * @param {string} location - The location name.
@@ -135,7 +140,7 @@ function updateWeatherInfo(weatherData, location, formattedDate) {
   updateWeatherCondition(weather.weathercode);
   updateWeatherImage(weather.weathercode);
 
-  const locationText = document.querySelector(".country-text");
+  const locationText = document.querySelector(".location-text");
   const conditionText = document.querySelector(".condition-text");
   const windSpeedText = document.querySelector(".wind-value-text");
 
@@ -151,22 +156,25 @@ function updateWeatherInfo(weatherData, location, formattedDate) {
 
   const currentDateText = document.querySelector(".current-date-text");
   const weatherInfoSection = document.querySelector(".weather-info");
-  const searchCitySection = document.querySelector(".search-city");
+  const searchCitySection = document.querySelector(".landing-page");
   const errorSection = document.querySelector(".error-404");
 
   currentDateText.textContent = formattedDate;
   weatherInfoSection.style.display = "block";
   searchCitySection.style.display = "none";
   errorSection.style.display = "none";
+  locationInput.value = "";
 }
 
 /**
- * Updates UI with 7-day weather forecast data 
+ * Updates UI with 7-day weather forecast data
  *
  * @param {object} dailyData - The daily data object returned by the Open Meteo API.
  */
 function update7DayForecast(dailyData) {
-  const forecastContainer = document.querySelector(".forecast-items-container");
+  const forecastContainer = document.querySelector(
+    ".sevenday-forecast-container"
+  );
   forecastContainer.innerHTML = "";
 
   // Store daily max/min temperatures and weather codes for each day in the forecast
@@ -184,7 +192,13 @@ function update7DayForecast(dailyData) {
     const minTemp = Math.round(dailyData.temperature_2m_min[i]);
     const weatherCode = dailyData.weather_code[i];
 
-    forecastItem.innerHTML = generateForecastItemHTML(date, maxTemp, minTemp, weatherCode, i);
+    forecastItem.innerHTML = generateForecastItemHTML(
+      date,
+      maxTemp,
+      minTemp,
+      weatherCode,
+      i
+    );
     forecastContainer.appendChild(forecastItem);
   });
 }
@@ -198,7 +212,7 @@ function update7DayForecast(dailyData) {
  * @param {number} weatherCode - The weather code for the forecast item.
  */
 function generateForecastItemHTML(date, maxTemp, minTemp, weatherCode, i) {
-  const weatherCondition = weatherConditions[weatherCode] || "Unknown";
+  const weatherCondition = weatherConditions[weatherCode] || "rain";
   const weatherImageFile = weatherImages[weatherCode] || "clear.svg";
   const weatherImagePath = `assets/weather_img/${weatherImageFile}`;
 
@@ -221,14 +235,14 @@ toggleUnitBtn.addEventListener("click", () => {
 });
 
 /**
-  * Shows an error message when something goes wrong (e.g. city not found)
-  */
+ * Shows an error message when something goes wrong (e.g. city not found)
+ */
 function showError(error) {
   console.error(error);
 
   const errorSection = document.querySelector(".error-404");
   const weatherInfoSection = document.querySelector(".weather-info");
-  const searchCitySection = document.querySelector(".search-city");
+  const searchCitySection = document.querySelector(".landing-page");
 
   errorSection.style.display = "block";
   weatherInfoSection.style.display = "none";
@@ -237,8 +251,8 @@ function showError(error) {
 
 const searchBtn = document.querySelector(".search-btn");
 /**
-  * Handles searching when the search button is clicked
-  */
+ * Handles searching when the search button is clicked
+ */
 searchBtn.addEventListener("click", () => {
   handleSearch();
 });
@@ -253,8 +267,8 @@ function handleSearch() {
 }
 
 /**
-  * Handles searching when the 'Enter' key is pressed in the input field
-  */
+ * Handles searching when the 'Enter' key is pressed in the input field
+ */
 locationInput.addEventListener("keydown", (e) => {
   if (e.key === "Enter") {
     handleSearch();

@@ -1,6 +1,6 @@
 /**
-  * Maps weather codes to weather condition descriptions
-  */
+ * Maps weather codes to weather condition descriptions
+ */
 const weatherConditions = {
   0: "Clear",
   1: "Clear",
@@ -17,28 +17,28 @@ const weatherConditions = {
   71: "Snowfall",
   73: "Snowfall",
   75: "Snowfall",
-  95: "Thunderstorm",
-  96: "Thunderstorm ",
+  95: "Thunder",
+  96: "Thunder ",
 };
 
 /**
-  * Updates the displayed weather condition text in UI based on weather code
-  */
+ * Updates the displayed weather condition text in UI based on weather code
+ */
 function updateWeatherCondition(weatherCode) {
   const conditionText = document.querySelector(".condition-text");
   conditionText.textContent = weatherConditions[weatherCode] || "Unknown";
 }
 
 /**
-  * Maps weather codes to weather icon filenames in assets/weather_img dir
-  */
+ * Maps weather codes to weather icon filenames in assets/weather_img dir
+ */
 const weatherImages = {
   0: "clear.svg",
   1: "clear.svg",
   2: "clouds.svg",
-  3: "clouds.svg",
-  45: "atmosphere.svg",
-  48: "atmosphere.svg",
+  3: "overcast.svg",
+  45: "fog.svg",
+  48: "fog.svg",
   51: "drizzle.svg",
   53: "drizzle.svg",
   55: "drizzle.svg",
@@ -56,10 +56,10 @@ const weatherImages = {
 };
 
 /**
-  * Updates the weather image displayed in UI based on weather code
-  */
+ * Updates the weather image displayed in UI based on weather code
+ */
 function updateWeatherImage(weatherCode) {
-  const weatherImage = document.querySelector(".weather-summary-img");
+  const weatherImage = document.querySelector(".current-weather-img");
   const imageFile = weatherImages[weatherCode] || "clear.svg";
   weatherImage.src = `assets/weather_img/${imageFile}`;
 }

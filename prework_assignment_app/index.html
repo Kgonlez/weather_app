@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TheWeatherApp</title>
     <link rel="stylesheet" href="./style.css" />
-    <!-- Import google icons -->
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
@@ -15,71 +14,76 @@
   </head>
 
   <body>
-    <nav class="nav-container">
-      <span class="material-symbols-outlined"> partly_cloudy_night </span>
-      <h1>TheWeatherApp</h1>
-    </nav>
+    <!--Logo + Search bar-->
+    <header>
+      <nav>
+        <div class="logo-container">
+          <span class="material-symbols-outlined"> partly_cloudy_night </span>
+          <h1>TheWeatherApp</h1>
+        </div>
+        <div class="searchbar-container">
+          <input class="location-input" placeholder="Search..." type="text" />
+          <button class="search-btn">
+            <span class="material-symbols-outlined"> search </span>
+          </button>
+        </div>
+      </nav>
+    </header>
 
+    <!--main Container that displays info once rendered-->
     <main class="main-container">
-      <header class="input-container">
-        <input class="location-input" placeholder="Search..." type="text" />
-        <button class="search-btn">
-          <span class="material-symbols-outlined"> search </span>
-        </button>
-      </header>
-
       <section class="weather-info" style="display: none">
-        <div class="location-date-container">
+        <!--Location, Current Date, and Current Time of Location-->
+        <div class="location-info-container">
           <div class="location">
             <span class="material-symbols-outlined"> location_on </span>
-            <h4 class="country-text">Los Angeles</h4>
+            <h4 class="location-text"></h4>
           </div>
-          <h5 class="current-date-text regular-text">Tue, 17 Sept</h5>
+          <div class="date-time">
+            <h5 class="current-date-text regular-text"></h5>
+            |
+            <h5 class="local-time-text regular-text"></h5>
+          </div>
         </div>
 
-        <div class="weather-summary-container">
+        <!--Current Weather Info Display -->
+        <div class="current-weather-container">
           <img
             src="assets/weather_img/clouds.svg"
-            class="weather-summary-img"
+            class="current-weather-img"
           />
-          <div class="weather-summary-info">
-            <h1 class="temp-text">29 °C</h1>
-            <h3 class="condition-text">Clouds</h3>
+          <div class="current-weather-info">
+            <h1 class="temp-text"></h1>
+            <h3 class="condition-text"></h3>
             <button id="toggle-unit-btn"></button>
           </div>
         </div>
 
-        <div class="weather-conditions-container">
-          <div class="condition-item">
-            <span class="material-symbols-outlined"> schedule </span>
-            <div class="condition-info">
-              <h5 class="regular-text">Current Time</h5>
-              <h5 class="local-time-text">N/A</h5>
-            </div>
-          </div>
+        <!-- Current Weather Conditions Display -->
+        <div class="current-weather-conditions-container">
           <div class="condition-item">
             <span class="material-symbols-outlined"> air </span>
             <div class="condition-info">
-              <h5 class="regular-text">Wind Speed</h5>
-              <h5 class="wind-value-text">2 m/s</h5>
+              <h5>Wind Speed</h5>
+              <h5 class="wind-value-text"></h5>
             </div>
           </div>
         </div>
 
+        <!--7 Day Weather Forecast Information -->
         <h3 class="h3-text">7-DAY FORECAST</h3>
-        <div class="forecast-items-container"></div>
+        <div class="sevenday-forecast-container"></div>
       </section>
 
-      <section class="search-city section-message">
+      <!--Landing page, Welcome screen Display -->
+      <section class="landing-page section-message">
+        <h4 class="regular-text">
+          Enter a city to explore its current weather and forecast
+        </h4>
         <img class="message-img" src="assets/map-base 1.svg" />
-        <div>
-          <h1>Search City</h1>
-          <h4 class="regular-text">
-            Enter a city to explore its current weather and forecast
-          </h4>
-        </div>
       </section>
 
+      <!--Error Page if Input is mispelled or City does not exist -->
       <section class="error-404 section-message" style="display: none">
         <img src="assets/error-404.png" />
         <div>
